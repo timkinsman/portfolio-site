@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Contact = () => {
+const NotFound = () => {
   return (
     <div>
-      Contact
+      NotFound
     </div>
   );
 }
 
-export default Contact;
+export default NotFound;

@@ -3,7 +3,7 @@ import React from 'react';
 const Experience = () => {
   return (
     <div>
-      Experience
+      JS Dev @ Brighter Futures Group
     </div>
   );
 }
