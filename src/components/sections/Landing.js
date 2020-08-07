@@ -1,11 +1,14 @@
 import React from 'react';
 
+import Chatbot from '../chatbot/Chatbot';
+
 const Landing = () => {
   return (
     <div>
-      &gt;TimothyKnsman_
       <br />
-      [Enter] to chat
+      Chat with me
+      <br />
+      <Chatbot />
     </div>
   );
 }
