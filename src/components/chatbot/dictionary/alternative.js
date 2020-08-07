@@ -3,5 +3,4 @@ export const alternative = [
   "Go on...",
   "Try again",
   "I'm listening...",
-  "Bro..."
 ];
