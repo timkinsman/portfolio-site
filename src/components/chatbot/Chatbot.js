@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import $ from 'jquery';
+
 import { trigger } from './dictionary/trigger';
 import { reply } from './dictionary/reply';
 import { alternative } from './dictionary/alternative';
@@ -8,12 +10,16 @@ import { robot } from './dictionary/robot';
 class Chatbot extends Component {
   state = { term: 'Timothy Kinsman', messages: [] };
 
+  componentDidMount() {
+    $('input').focus();
+  }
+
   onFormSubmit = async (event) => {
     event.preventDefault();
     console.log(`Me: ${this.state.term}`)
 
     await this.setState(state => {
-      const messages = state.messages.push(`Me: ${this.state.term}`)
+      const messages = state.messages.push(`Guest: ${this.state.term}`)
       return messages
     })
 
@@ -37,7 +43,7 @@ class Chatbot extends Component {
     console.log(`Bot: ${product}`)
 
     await this.setState(state => {
-      const messages = state.messages.push(`Bot: ${product}`)
+      const messages = state.messages.push(`Robin: ${product}`)
       return messages
     })
 
@@ -59,13 +65,16 @@ class Chatbot extends Component {
     return item;
   }
 
+  //<div>&gt; Robin: Chat with me</div>
+
   render() {
     return(
       <div>
-        {this.state.messages.map(message => <div >&gt; {message}</div>)}
+        <div>
+          {this.state.messages.map(message => <div>&gt; {message}</div>)}
+        </div>
         <form onSubmit={this.onFormSubmit}>
-          <div>
-            <input 
+          <div>&gt; <input 
               type="text" 
               value={this.state.term}
               onChange={e => this.setState({term: e.target.value})}

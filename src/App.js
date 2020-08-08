@@ -11,6 +11,8 @@ import Landing from './components/sections/Landing';
 import NotFound from './components/sections/NotFound';
 import Work from './components/sections/Work';
 
+import './App.css';
+
 const App = () => {
   return (
     <Router>

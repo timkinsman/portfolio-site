@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div style={{display: 'block'}}>
+    <div style={{display: 'block', height: '5vh'}}>
       <Link to="/">00. Timothy Kinsman</Link>
 
       <div style={{float: 'right'}}>
