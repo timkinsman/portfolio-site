@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
 
-import About from './components/sections/About';
-import Contact from './components/sections/Contact';
-import Experience from './components/sections/Experience';
-import Landing from './components/sections/Landing';
-import NotFound from './components/sections/NotFound';
-import Work from './components/sections/Work';
+import About from './components/pages/About';
+import Contact from './components/pages/Contact';
+import Experience from './components/pages/Experience';
+import Landing from './components/pages/Landing';
+import NotFound from './components/pages/NotFound';
+import Work from './components/pages/Work';
 
 import './App.css';
 
