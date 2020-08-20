@@ -5,7 +5,7 @@ import Chatbot from '../chatbot/Chatbot';
 const Landing = () => {
   return (
     <div className="container">
-      <div>
+      <div style={{margin: 'auto',}}>
         <Chatbot />
       </div>
     </div>

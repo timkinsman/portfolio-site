@@ -19,7 +19,7 @@ class Chatbot extends Component {
     console.log(`Me: ${this.state.term}`)
 
     await this.setState(state => {
-      const messages = state.messages.push(`Guest: ${this.state.term}`)
+      const messages = state.messages.push(`${this.state.term}`)
       return messages
     })
 
@@ -70,8 +70,12 @@ class Chatbot extends Component {
   render() {
     return(
       <div>
-        <div>
-          {this.state.messages.map(message => <div>&gt; {message}</div>)}
+        <div style={{position: 'relative'}}>
+          <div>
+            <div style={{position: 'absolute', bottom: '0', width: '30vw'}}>
+              {this.state.messages.map(message => <div>&gt; {message}</div>)}
+            </div>
+          </div>
         </div>
         <form onSubmit={this.onFormSubmit}>
           <div>&gt; <input 

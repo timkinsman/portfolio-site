@@ -13,21 +13,30 @@ import Work from './components/pages/Work';
 
 import './App.css';
 
-const App = () => {
-  return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/experience" component={Experience} />
-        <Route exact path="/work" component={Work} />
-        <Route exact path="/contact" component={Contact} />
-        <Route component={NotFound} />
-      </Switch>
-      <Footer />
-    </Router>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    let el = document.querySelector('.page');
+    el.classList.add('fade-in');
+  }
+
+  render(){
+    return (
+      <Router>
+        <div className="page">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/experience" component={Experience} />
+            <Route exact path="/work" component={Work} />
+            <Route exact path="/contact" component={Contact} />
+            <Route component={NotFound} />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

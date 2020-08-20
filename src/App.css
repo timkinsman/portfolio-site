@@ -1,5 +1,38 @@
 body {
   font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+  background: #000c18;
+  color: #6688cc;
+}
+
+a {
+  color: #6688cc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #770811;
+}
+
+input {
+  border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #6688cc;
+    font-family: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+    font-size: 16px;
+}
+
+input:focus {
+  border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
 }
 
 .container {
@@ -9,3 +42,21 @@ body {
   margin: auto;
   width: 60vw;
 }
+
+.page {
+  opacity: 0;
+  transition: 2s opacity;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+/*
+	background: #000c18
+  caret: #ddbb88
+  foreground: #6688cc
+  invisibles: #002040
+	lineHighlight: #082050
+  selection: #770811
+*/
