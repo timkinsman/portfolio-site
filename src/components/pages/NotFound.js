@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 const NotFound = () => {
   return (
     <div className="container">
       Zeppy :D
     </div>
-  );
+  )
 }
 
-export default NotFound;
+export default NotFound

@@ -8,7 +8,7 @@ import { alternative } from './dictionary/alternative';
 import { robot } from './dictionary/robot';
 
 class Chatbot extends Component {
-  constructor(){
+  constructor() {
     super();
     state = { term: 'Timothy Kinsman', messages: [] };
   }
@@ -17,7 +17,7 @@ class Chatbot extends Component {
     $('input').focus();
   }
 
-  async onFormSubmit (event) {
+  async onFormSubmit(event) {
     event.preventDefault();
     console.log(`Me: ${this.state.term}`)
 
@@ -55,7 +55,7 @@ class Chatbot extends Component {
     this.setState({term: ''})
   }
 
-  compare = (triggerArray, replyArray, text) => {
+  compare(triggerArray, replyArray, text) {
     let item;
     for (let x = 0; x < triggerArray.length; x++) {
       for (let y = 0; y < replyArray.length; y++) {

@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import Chatbot from '../chatbot/Chatbot';
+import Chatbot from '../chatbot/Chatbot'
 
 const Landing = () => {
   return (
     <div className="container">
-      <div style={{margin: 'auto',}}>
+      <div style={{ margin: 'auto' }}>
         <Chatbot />
       </div>
     </div>
-  );
+  )
 }
 
-export default Landing;
+export default Landing

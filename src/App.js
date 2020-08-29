@@ -14,12 +14,12 @@ import Work from './components/pages/Work'
 import './App.css'
 
 class App extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     const el = document.querySelector('.page')
     el.classList.add('fade-in')
   }
 
-  render () {
+  render() {
     return (
       <Router>
         <div className="page">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Work = () => {
   return (
@@ -13,7 +13,7 @@ const Work = () => {
       <br />
       more works at www.github.com/timkinsman
     </div>
-  );
+  )
 }
 
-export default Work;
+export default Work
