@@ -11,6 +11,6 @@ jobs:
       - uses: timkinsman/eslint-action@master
         with:
           autofixes: true
-      - run: |
-        git add -A git commit -m "ESLint"
-        git push
+      - run: git add -A
+      - run: git commit -m "ESLint"
+      - run: git push
