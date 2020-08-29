@@ -6,4 +6,4 @@ jobs:
     name: A job to run JS Lint
     steps:
     - name: JS Lint action step
-      uses: timkinsman/JS-lint
+      uses: timkinsman/JS-lint@v1
