@@ -1,25 +1,25 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import Footer from './components/layout/Footer';
-import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer'
+import Navbar from './components/layout/Navbar'
 
-import About from './components/pages/About';
-import Contact from './components/pages/Contact';
-import Experience from './components/pages/Experience';
-import Landing from './components/pages/Landing';
-import NotFound from './components/pages/NotFound';
-import Work from './components/pages/Work';
+import About from './components/pages/About'
+import Contact from './components/pages/Contact'
+import Experience from './components/pages/Experience'
+import Landing from './components/pages/Landing'
+import NotFound from './components/pages/NotFound'
+import Work from './components/pages/Work'
 
-import './App.css';
+import './App.css'
 
 class App extends React.Component {
-  componentDidMount() {
-    let el = document.querySelector('.page');
-    el.classList.add('fade-in');
+  componentDidMount = () => {
+    const el = document.querySelector('.page')
+    el.classList.add('fade-in')
   }
 
-  render(){
+  render = () => {
     return (
       <Router>
         <div className="page">
@@ -35,8 +35,8 @@ class App extends React.Component {
           <Footer />
         </div>
       </Router>
-    );
+    )
   }
 }
 
-export default App;
+export default App
