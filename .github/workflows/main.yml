@@ -1,9 +1,10 @@
+name: Lint
+
 on: [push]
 
 jobs:
-  js_lint_job:
+  eslint:
     runs-on: ubuntu-latest
-    name: A job to run JS Lint
     steps:
-    - name: JS Lint action step
-      uses: timkinsman/JS-lint@master
+      - uses: actions/checkout@v1    
+      - uses: timkinsman/eslint-action@master
