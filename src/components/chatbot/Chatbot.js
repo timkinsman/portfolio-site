@@ -8,7 +8,10 @@ import { alternative } from './dictionary/alternative';
 import { robot } from './dictionary/robot';
 
 class Chatbot extends Component {
-  state = { term: 'Timothy Kinsman', messages: [] };
+  constructor(){
+    super();
+    state = { term: 'Timothy Kinsman', messages: [] };
+  }
 
   componentDidMount() {
     $('input').focus();
