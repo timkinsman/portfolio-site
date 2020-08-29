@@ -15,5 +15,4 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       
-      - run: npm install eslint
       - uses: timkinsman/JS-lint@master
