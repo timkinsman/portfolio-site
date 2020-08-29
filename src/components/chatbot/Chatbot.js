@@ -17,7 +17,7 @@ class Chatbot extends Component {
     $('input').focus();
   }
 
-  onFormSubmit = async (event) => {
+  async onFormSubmit (event) {
     event.preventDefault();
     console.log(`Me: ${this.state.term}`)
 
