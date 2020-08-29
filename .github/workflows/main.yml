@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to run JS Lint
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - name: JS Lint action step
       uses: timkinsman/JS-lint@master
