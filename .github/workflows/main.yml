@@ -1,0 +1,9 @@
+on: [push]
+
+jobs:
+  js_lint_job:
+    runs-on: ubuntu-latest
+    name: A job to run JS Lint
+    steps:
+    - name: JS Lint action step
+      uses: timkinsman/JS-lintru

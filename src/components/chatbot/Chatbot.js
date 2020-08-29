@@ -65,8 +65,6 @@ class Chatbot extends Component {
     return item;
   }
 
-  //<div>&gt; Robin: Chat with me</div>
-
   render() {
     return(
       <div>
