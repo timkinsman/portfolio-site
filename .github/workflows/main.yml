@@ -1,20 +1,11 @@
+name: Lint
+
 on: [push]
 
 jobs:
-  js_lint_job:
+  eslint:
     runs-on: ubuntu-latest
-    name: A job to run JS Lint
     steps:
-    - uses: actions/checkout@master
-      
-      # Install Node.js
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 12
-
-      # Install your dependencies
-    - run: npm ci
-    - run: npm i eslint
-      
-    - name: JS Lint action step
-      uses: timkinsman/JS-lint@master
+      - uses: actions/checkout@v1
+      - run: npm install eslint
+      - uses: timkinsman/JS-lint@master
