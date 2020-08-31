@@ -10,7 +10,7 @@ jobs:
       - run: npm ci
       - uses: timkinsman/eslint-action@master
         with:
-          #autofixes: true
+          autofixes: true
       - name: Check for changes
         run: git status
       - name: Commit files
