@@ -6,8 +6,7 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - run: npm ci
+      - uses: actions/checkout@v2
       - uses: timkinsman/eslint-action@master
         #with:
           #autofixes: true
