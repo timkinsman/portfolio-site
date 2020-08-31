@@ -9,13 +9,13 @@ jobs:
       - uses: actions/checkout@v1
       - run: npm ci
       - uses: timkinsman/eslint-action@master
-        #with:
+        with:
           #autofixes: true
-      #- name: Check for changes
-        #run: git status
-      #- name: Commit files
-        #run: |
-          #git config --local user.email "action@github.com"
-          #git config --local user.name "GitHub Action"
-          #git commit -m "Add changes" -a
-          #git push
+      - name: Check for changes
+        run: git status
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "ESLint fixes" -a
+          git push
