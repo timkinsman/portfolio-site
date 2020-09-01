@@ -13,11 +13,11 @@ class Chatbot extends Component {
     state = { term: 'Timothy Kinsman', messages: [] }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     $('input').focus()
   }
 
-  async onFormSubmit(event) {
+  async onFormSubmit (event) {
     event.preventDefault()
     console.log(`Me: ${this.state.term}`)
 
@@ -52,10 +52,10 @@ class Chatbot extends Component {
 
     console.log(this.state.messages)
 
-    this.setState({term: ''})
+    this.setState({ term: '' })
   }
 
-  compare(triggerArray, replyArray, text) {
+  compare (triggerArray, replyArray, text) {
     let item
     for (let x = 0; x < triggerArray.length; x++) {
       for (let y = 0; y < replyArray.length; y++) {
@@ -68,8 +68,8 @@ class Chatbot extends Component {
     return item
   }
 
-  render() {
-    return(
+  render () {
+    return (
       <div>
         <div style={{ position: 'relative' }}>
           <div>
