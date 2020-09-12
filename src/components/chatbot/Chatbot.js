@@ -10,14 +10,14 @@ import { robot } from './dictionary/robot'
 class Chatbot extends Component {
   constructor () {
     super()
-    state = { term: 'Timothy Kinsman', messages: [] }
+    this.state = { term: 'Timothy Kinsman', messages: [] }
   }
 
   componentDidMount () {
     $('input').focus()
   }
 
-  async onFormSubmit (event) {
+  onFormSubmit = async (event) => {
     event.preventDefault()
     console.log(`Me: ${this.state.term}`)
 
@@ -55,7 +55,7 @@ class Chatbot extends Component {
     this.setState({ term: '' })
   }
 
-  compare (triggerArray, replyArray, text) {
+  compare = (triggerArray, replyArray, text) => {
     let item
     for (let x = 0; x < triggerArray.length; x++) {
       for (let y = 0; y < replyArray.length; y++) {
