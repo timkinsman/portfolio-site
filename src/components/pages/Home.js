@@ -2,7 +2,7 @@ import React from 'react'
 
 import Chatbot from '../chatbot/Chatbot'
 
-const Landing = () => {
+const Home = () => {
   return (
     <div className="container">
       <div style={{ margin: 'auto' }}>
@@ -12,4 +12,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Home

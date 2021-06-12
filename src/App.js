@@ -1,28 +1,20 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
-import Footer from './components/layout/Footer'
-import Navbar from './components/layout/Navbar'
-
-import About from './components/pages/About'
-import Contact from './components/pages/Contact'
-import Experience from './components/pages/Experience'
-import Landing from './components/pages/Landing'
-import NotFound from './components/pages/NotFound'
-import Work from './components/pages/Work'
-
-import './App.css'
+import React from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import Footer from "./components/global/Footer"
+import Navbar from "./components/global/Navbar"
+import About from "./components/pages/About"
+import Contact from "./components/pages/Contact"
+import Experience from "./components/pages/Experience"
+import Landing from "./components/pages/Home"
+import NotFound from "./components/pages/NotFound"
+import Work from "./components/pages/Work"
+import "./App.css"
 
 class App extends React.Component {
-  componentDidMount () {
-    const el = document.querySelector('.page')
-    el.classList.add('fade-in')
-  }
-
   render () {
     return (
       <Router>
-        <div className="page">
+        <div className="global-fadein">
           <Navbar />
           <Switch>
             <Route exact path="/" component={Landing} />
