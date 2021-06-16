@@ -1,0 +1,11 @@
+.navbar-container {
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+
+.navbar-right {
+    margin-left: auto;
+    display: flex;
+    gap: 30px;
+}
