@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-
-import $ from 'jquery'
-
-import { trigger } from './dictionary/trigger'
-import { reply } from './dictionary/reply'
 import { alternative } from './dictionary/alternative'
+import { reply } from './dictionary/reply'
 import { robot } from './dictionary/robot'
+import { trigger } from './dictionary/trigger'
+import $ from 'jquery'
 
 class Chatbot extends Component {
   constructor () {
