@@ -1,31 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import { alternative } from './dictionary/alternative'
 import { reply } from './dictionary/reply'
 import { robot } from './dictionary/robot'
 import { trigger } from './dictionary/trigger'
 import $ from 'jquery'
 
-class Chatbot extends Component {
-  constructor () {
-    super()
-    this.state = { term: 'Timothy Kinsman', messages: [] }
-  }
+const Chatbot = () => {
+  const [term, setTerm] = useState<string>("Welcome")
+  const [messages, setMessages] = useState<Array<string>>([])
 
-  componentDidMount () {
+  useEffect(() => {
     $('input').focus()
-  }
+  }, [])
 
-  onFormSubmit = async (event) => {
+  const onFormSubmit = async (event: any) => {
     event.preventDefault()
-    console.log(`Me: ${this.state.term}`)
+    console.log(`You: ${term}`)
 
-    await this.setState(state => {
-      const messages = state.messages.push(`${this.state.term}`)
-      return messages
-    })
+    await setMessages([...messages, term])
 
-    let product
-    let text = this.state.term.toLowerCase().replace(/[^\w\s\d]/gi, '')
+    let product: string
+    let text: string = term.toLowerCase().replace(/[^\w\s\d]/gi, '')
     text = text
       .replace(/ a /g, ' ')
       .replace(/i feel /g, '')
@@ -33,8 +28,8 @@ class Chatbot extends Component {
       .replace(/please /g, '')
       .replace(/ please/g, '')
 
-    if (this.compare(trigger, reply, text)) {
-      product = this.compare(trigger, reply, text)
+    if (compare(trigger, reply, text)) {
+      product = compare(trigger, reply, text)
     } else if (text.match(/robot/gi)) {
       product = robot[Math.floor(Math.random() * robot.length)]
     } else {
@@ -43,18 +38,13 @@ class Chatbot extends Component {
 
     console.log(`Bot: ${product}`)
 
-    await this.setState(state => {
-      const messages = state.messages.push(`Robin: ${product}`)
-      return messages
-    })
+    await setMessages([...messages, `Robin: ${product}`])
 
-    console.log(this.state.messages)
-
-    this.setState({ term: '' })
+    setTerm("")
   }
 
-  compare = (triggerArray, replyArray, text) => {
-    let item
+  const compare = (triggerArray: Array<Array<string>>, replyArray: Array<Array<string>>, text: string) => {
+    let item: string = ""
     for (let x = 0; x < triggerArray.length; x++) {
       for (let y = 0; y < replyArray.length; y++) {
         if (triggerArray[x][y] === text) {
@@ -66,27 +56,26 @@ class Chatbot extends Component {
     return item
   }
 
-  render () {
-    return (
-      <div>
-        <div style={{ position: 'relative' }}>
-          <div>
-            <div style={{ position: 'absolute', bottom: '0', width: '30vw' }}>
-              {this.state.messages.map(message => <div>&gt; {message}</div>)}
-            </div>
+
+  return (
+    <div>
+      <div style={{ position: 'relative' }}>
+        <div>
+          <div style={{ position: 'absolute', bottom: '0', width: '30vw' }}>
+            {messages.map(message => <div>&gt; {message}</div>)}
           </div>
         </div>
-        <form onSubmit={this.onFormSubmit}>
-          <div>&gt; <input
-            type='text'
-            value={this.state.term}
-            onChange={e => this.setState({ term: e.target.value })}
-          />
-          </div>
-        </form>
       </div>
-    )
-  }
+      <form onSubmit={onFormSubmit}>
+        <div>&gt;<input
+          type='text'
+          value={term}
+          onChange={e => setTerm(e.target.value)}
+        />
+        </div>
+      </form>
+    </div>
+  )
 }
 
 export default Chatbot
