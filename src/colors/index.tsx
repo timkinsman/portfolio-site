@@ -1,3 +1,2 @@
 //Themes
-export const DARK = "#0B0B0C";
-export const LIGHT = "#F5F5F5";
+export const DARK = {background: "#000C18", color: "#6688CC", hover: "#770811"};
