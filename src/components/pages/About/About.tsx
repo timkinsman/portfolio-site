@@ -1,18 +1,15 @@
 import React from "react"
 import Navbar from "../../global/Navbar/Navbar"
+import Footer from "../../global/Footer/Footer"
 
 const About = () => {
   return (
     <div className="global-container global-fadein">
-      <Navbar />
+      <Navbar page="about" />
       <div>
-        Hi, my name is Timothy yada yada yada
-        JS Dev @ Brighter Futures Group
-        Associate Software Engineer @ Allscripts
-        Published paper
-        innovative se of the year
-        First class honours
+
       </div>
+      <Footer />
     </div>
   )
 }

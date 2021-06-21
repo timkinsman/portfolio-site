@@ -3,4 +3,7 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+    position: absolute;
+    width: inherit;
+    bottom: 0;
 }

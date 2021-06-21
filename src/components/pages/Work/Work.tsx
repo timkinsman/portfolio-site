@@ -1,19 +1,14 @@
 import React from "react"
 import Navbar from "../../global/Navbar/Navbar"
+import Footer from "../../global/Footer/Footer"
 
 const Work = () => {
   return (
     <div className="global-container global-fadein">
-      <Navbar />
+      <Navbar page="work" />
       <div>
-        Transparency
-        <br />
-        This portfolio site
-        <br />
-        The chatBot i make for this site??
-        <br />
-        more works at www.github.com/timkinsman
       </div>
+      <Footer />
     </div>
   )
 }

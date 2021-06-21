@@ -7,7 +7,7 @@ import styles from "./Home.module.css";
 const Home = () => {
   return (
     <div className="global-container global-fadein">
-      <Navbar />
+      <Navbar page="home" />
       <div className={styles["home-hero"]}>
         <Chatbot />
       </div>

@@ -15,9 +15,8 @@ const Chatbot = () => {
 
   const onFormSubmit = async (event: any) => {
     event.preventDefault()
-    console.log(`You: ${term}`)
-
-    await setMessages([...messages, term])
+    
+    await setMessages([...messages, `You: ${term}`])
 
     let product: string
     let text: string = term.toLowerCase().replace(/[^\w\s\d]/gi, '')
@@ -36,10 +35,8 @@ const Chatbot = () => {
       product = alternative[Math.floor(Math.random() * alternative.length)]
     }
 
-    console.log(`Bot: ${product}`)
-
-    await setMessages([...messages, `Robin: ${product}`])
-
+    await setMessages([...messages, `Ke: ${product}`])
+    console.log(messages)
     setTerm("")
   }
 
@@ -62,17 +59,17 @@ const Chatbot = () => {
       <div style={{ position: 'relative' }}>
         <div>
           <div style={{ position: 'absolute', bottom: '0', width: '30vw' }}>
-            {messages.map(message => <div>&gt; {message}</div>)}
+            <h1 style={{fontSize: "xxx-large"}}>{messages.map(message => <div>&gt; {message}</div>)}</h1>
           </div>
         </div>
       </div>
       <form onSubmit={onFormSubmit}>
-        <div>&gt;<input
+        <h1 style={{fontSize: "xxx-large"}}>&gt; <input
           type='text'
           value={term}
           onChange={e => setTerm(e.target.value)}
         />
-        </div>
+        </h1>
       </form>
     </div>
   )
