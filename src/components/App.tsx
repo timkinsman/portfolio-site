@@ -5,7 +5,7 @@ import Contact from "./pages/Contact/Contact"
 import Landing from "./pages/Home/Home"
 import NotFound from "./pages/NotFound/NotFound"
 import Work from "./pages/Work/Work"
-import { DARK, LIGHT } from "../colors"
+import { DARK, LIGHT, COFFEE } from "../colors"
 import {connect} from "react-redux";
 import $ from "jquery"
 
@@ -13,11 +13,17 @@ const App = (props: any) => {
 
   useEffect(() => {
     switch(props.portfolio.theme){
-      case "LIGHT":
+      case "light":
         $("body").css({"background": LIGHT.background, "color": LIGHT.color})
+        $("a").hover(function(){ $(this).css('color', LIGHT.hover) }, function(){ $(this).css('color', LIGHT.color) })
         break;
-      case "DARK":
+      case "dark":
         $("body").css({"background": DARK.background, "color": DARK.color})
+        $("a").hover(function(){ $(this).css('color', DARK.hover) }, function(){ $(this).css('color', DARK.color) })
+        break;
+      case "coffee":
+        $("body").css({"background": COFFEE.background, "color": COFFEE.color})
+        $("a").hover(function(){ $(this).css('color', COFFEE.hover) }, function(){ $(this).css('color', COFFEE.color) })
         break;
     }
   }, [props.portfolio.theme])

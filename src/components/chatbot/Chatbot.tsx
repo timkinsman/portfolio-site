@@ -4,8 +4,10 @@ import { reply } from './dictionary/reply'
 import { robot } from './dictionary/robot'
 import { trigger } from './dictionary/trigger'
 import $ from 'jquery'
+import { updateTheme } from "../../actions";
+import {connect} from "react-redux";
 
-const Chatbot = () => {
+const Chatbot = (props: any) => {
   const [term, setTerm] = useState<string>("Welcome")
   const [messages, setMessages] = useState<Array<string>>([])
 
@@ -18,25 +20,50 @@ const Chatbot = () => {
     
     await setMessages([...messages, `You: ${term}`])
 
-    let product: string
-    let text: string = term.toLowerCase().replace(/[^\w\s\d]/gi, '')
-    text = text
-      .replace(/ a /g, ' ')
-      .replace(/i feel /g, '')
-      .replace(/whats/g, 'what is')
-      .replace(/please /g, '')
-      .replace(/ please/g, '')
+    if(term.split(" ")[0] === "colorscheme"){
+      const termSplit : Array<string> = term.split(" ")
+      console.log(termSplit)
+      if(termSplit.length === 2){
+        switch(termSplit[1]){
+          case "dark":
+            props.updateTheme("dark")
+            break;
+          case "light":
+            props.updateTheme("light")
+            break;
+          case "coffee":
+            props.updateTheme("coffee")
+            break;
+          default:
+            await setMessages([...messages, `Wes: That colorscheme does not exist :(`])
+        }
+      }else{
+        await setMessages([...messages, `Wes: colorscheme <dark|light|coffee>`])
+      }
+    }else{ //conversion
+      let product: string
+      let text: string = term.toLowerCase().replace(/[^\w\s\d]/gi, '')
+      text = text
+        .replace(/ a /g, ' ')
+        .replace(/i feel /g, '')
+        .replace(/whats/g, 'what is')
+        .replace(/please /g, '')
+        .replace(/ please/g, '')
 
-    if (compare(trigger, reply, text)) {
-      product = compare(trigger, reply, text)
-    } else if (text.match(/robot/gi)) {
-      product = robot[Math.floor(Math.random() * robot.length)]
-    } else {
-      product = alternative[Math.floor(Math.random() * alternative.length)]
+      if (compare(trigger, reply, text)) {
+        product = compare(trigger, reply, text)
+      } else if (text.match(/robot/gi)) {
+        product = robot[Math.floor(Math.random() * robot.length)]
+      } else {
+        product = alternative[Math.floor(Math.random() * alternative.length)]
+      }
+
+      await setMessages([...messages, `Wes: ${product}`])
+
     }
 
-    await setMessages([...messages, `Ke: ${product}`])
     console.log(messages)
+
     setTerm("")
   }
 
@@ -75,4 +102,6 @@ const Chatbot = () => {
   )
 }
 
-export default Chatbot
+export default connect(null, { 
+  updateTheme
+})(Chatbot);
