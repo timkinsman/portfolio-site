@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 const Footer = () => {
   return (
     <div className={styles["footer-container"]}>
-      <h2>© 2020 Tim Kinsman</h2>
+      <h2>© 2021 Tim Kinsman</h2>
     </div>
   )
 }

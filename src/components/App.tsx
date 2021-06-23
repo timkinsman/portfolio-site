@@ -1,32 +1,23 @@
 import React, {useEffect} from "react"
+import {connect} from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import About from "./pages/About/About"
 import Contact from "./pages/Contact/Contact"
 import Landing from "./pages/Home/Home"
 import NotFound from "./pages/NotFound/NotFound"
 import Work from "./pages/Work/Work"
-import { DARK, LIGHT, COFFEE } from "../colors"
-import {connect} from "react-redux";
+import { colors } from "../colors"
 import $ from "jquery"
 
 const App = (props: any) => {
-
   useEffect(() => {
-    switch(props.portfolio.theme){
-      case "light":
-        $("body").css({"background": LIGHT.background, "color": LIGHT.color})
-        $("a").hover(function(){ $(this).css('color', LIGHT.hover) }, function(){ $(this).css('color', LIGHT.color) })
-        break;
-      case "dark":
-        $("body").css({"background": DARK.background, "color": DARK.color})
-        $("a").hover(function(){ $(this).css('color', DARK.hover) }, function(){ $(this).css('color', DARK.color) })
-        break;
-      case "coffee":
-        $("body").css({"background": COFFEE.background, "color": COFFEE.color})
-        $("a").hover(function(){ $(this).css('color', COFFEE.hover) }, function(){ $(this).css('color', COFFEE.color) })
-        break;
-    }
-  }, [props.portfolio.theme])
+    $("body").css({"background": colors[props.portfolio.colorscheme].background, "color": colors[props.portfolio.colorscheme].color})
+    $("a").hover(function(){ 
+      $(this).css('color', colors[props.portfolio.colorscheme].hover)
+    }, function(){ 
+      $(this).css('color', colors[props.portfolio.colorscheme].color)
+    })
+  }, [props.portfolio.colorscheme])
 
   return (
     <Router>
@@ -41,7 +32,7 @@ const App = (props: any) => {
   )
 }
 
-const mapStateToProps = ( state: { portfolio: any; } ) => {
+const mapStateToProps = ( state: { portfolio: { colorscheme: string } } ) => {
   return {
     portfolio: state.portfolio
   }

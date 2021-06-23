@@ -1,6 +1,6 @@
 import React from "react"
-import Navbar from "../../global/Navbar/Navbar"
 import Footer from "../../global/Footer/Footer"
+import Navbar from "../../global/Navbar/Navbar"
 import styles from "./Contact.module.css"
 
 const Contact = () => {

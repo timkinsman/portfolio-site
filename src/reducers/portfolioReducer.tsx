@@ -1,17 +1,18 @@
 import {
-    UPDATE_THEME
+    UPDATE_COLORSCHEME
 } from "../actions/types";
 
-const INITIAL_STATE = {
-    theme: "dark"
+const pstrColorscheme = localStorage.getItem("colorscheme")
+const INITIAL_STATE: { [colorscheme: string]: string } = {
+    colorscheme: pstrColorscheme ? pstrColorscheme : "dark"
 };
 
 // eslint-disable-next-line
 export default (state = INITIAL_STATE, action: { type: string; payload: any; }) => {
     switch (action.type) {
-        case UPDATE_THEME:
-            return {...state, theme: action.payload }
-
+        case UPDATE_COLORSCHEME:
+            localStorage.setItem("colorscheme", action.payload);
+            return {...state, colorscheme: action.payload }
         default:
             return state
     }

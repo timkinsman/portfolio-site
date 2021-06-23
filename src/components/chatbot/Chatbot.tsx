@@ -1,18 +1,21 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { updateColorscheme } from "../../actions";
 import { alternative } from './dictionary/alternative'
 import { reply } from './dictionary/reply'
 import { robot } from './dictionary/robot'
 import { trigger } from './dictionary/trigger'
 import $ from 'jquery'
-import { updateTheme } from "../../actions";
-import {connect} from "react-redux";
 
-const Chatbot = (props: any) => {
+const Chatbot = (props: { updateColorscheme: Function }) => {
+  const history: any = useHistory();
+
   const [term, setTerm] = useState<string>("Welcome")
   const [messages, setMessages] = useState<Array<string>>([])
 
   useEffect(() => {
-    $('input').focus()
+    $("input").focus()
   }, [])
 
   const onFormSubmit = async (event: any) => {
@@ -21,24 +24,32 @@ const Chatbot = (props: any) => {
     await setMessages([...messages, `You: ${term}`])
 
     if(term.split(" ")[0] === "colorscheme"){
-      const termSplit : Array<string> = term.split(" ")
-      console.log(termSplit)
+      const termSplit: Array<string> = term.split(" ")
       if(termSplit.length === 2){
         switch(termSplit[1]){
           case "dark":
-            props.updateTheme("dark")
+            props.updateColorscheme("dark")
             break;
           case "light":
-            props.updateTheme("light")
+            props.updateColorscheme("light")
             break;
           case "coffee":
-            props.updateTheme("coffee")
+            props.updateColorscheme("coffee")
             break;
           default:
             await setMessages([...messages, `Wes: That colorscheme does not exist :(`])
         }
       }else{
         await setMessages([...messages, `Wes: colorscheme <dark|light|coffee>`])
+      }
+    }else if(term === "exit"){
+      window.close()
+    }else if(term.split(" ")[0] === "goto"){
+      const termSplit: Array<string> = term.split(" ")
+      if(termSplit.length === 2 && /^[a-zA-Z]+$/.test(termSplit[1])){
+        history.push(`/${termSplit[1]}`);
+      }else{
+        await setMessages([...messages, `Wes: goto <about|work|contact>`])
       }
     }else{ //conversion
       let product: string
@@ -59,10 +70,7 @@ const Chatbot = (props: any) => {
       }
 
       await setMessages([...messages, `Wes: ${product}`])
-
     }
-
-    console.log(messages)
 
     setTerm("")
   }
@@ -82,17 +90,17 @@ const Chatbot = (props: any) => {
 
 
   return (
-    <div>
-      <div style={{ position: 'relative' }}>
+    <div style={{ width: "100%" }}>
+      <div style={{ position: "relative" }}>
         <div>
-          <div style={{ position: 'absolute', bottom: '0', width: '30vw' }}>
+          <div style={{ position: "absolute", bottom: 0 }}>
             <h1 style={{fontSize: "xxx-large"}}>{messages.map(message => <div>&gt; {message}</div>)}</h1>
           </div>
         </div>
       </div>
       <form onSubmit={onFormSubmit}>
         <h1 style={{fontSize: "xxx-large"}}>&gt; <input
-          type='text'
+          type="text"
           value={term}
           onChange={e => setTerm(e.target.value)}
         />
@@ -103,5 +111,5 @@ const Chatbot = (props: any) => {
 }
 
 export default connect(null, { 
-  updateTheme
+  updateColorscheme
 })(Chatbot);

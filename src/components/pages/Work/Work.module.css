@@ -1,0 +1,19 @@
+.work-hero {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.work-grid {
+    column-gap: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.work-work {
+    border: 1px solid;
+    padding-top: 50%;
+}

@@ -1,4 +1,4 @@
-export const reply = [
+export const reply: Array<Array<string>> = [
   ['Hello!', 'Hi!', 'Hey!', 'Hi there!'],
   ['Fine... how are you?', 'Pretty well, how are you?', 'Fantastic, how are you?'],
   ['Nothing much', 'Exciting things!'],

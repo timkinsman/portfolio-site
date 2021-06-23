@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <div className="global-container global-fadein">
       <Navbar page="home" />
-      <div className={styles["home-hero"]}>
-        <Chatbot />
-      </div>
+        <div className={styles["home-hero"]}>
+          <Chatbot />
+        </div>
       <Footer />
     </div>
   )

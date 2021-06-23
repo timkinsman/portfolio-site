@@ -1,5 +1,5 @@
-import { UPDATE_THEME } from "./types";
+import { UPDATE_COLORSCHEME } from "./types";
 
-export const updateTheme = (payload: string) => {
-    return { type: UPDATE_THEME, payload };
+export const updateColorscheme = (payload: string) => {
+    return { type: UPDATE_COLORSCHEME, payload };
 };
