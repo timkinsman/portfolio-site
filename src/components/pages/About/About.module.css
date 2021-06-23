@@ -4,3 +4,22 @@
     height: 100vh;
     justify-content: center;
 }
+
+.about-grid {
+    column-gap: 25px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    height: 80%;
+    width: 100%;
+}
+
+.about-left {
+    align-items: center;
+    border: 1px solid;
+    display: grid;
+    padding: 20px;
+}
+
+.about-right {
+    border: 1px solid;
+}

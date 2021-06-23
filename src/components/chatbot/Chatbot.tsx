@@ -11,8 +11,8 @@ import $ from 'jquery'
 const Chatbot = (props: { updateColorscheme: Function }) => {
   const history: any = useHistory();
 
-  const [term, setTerm] = useState<string>("Welcome")
-  const [messages, setMessages] = useState<Array<string>>([])
+  const [mstrTerm, setTerm] = useState<string>("Welcome")
+  const [marrstrMessages, setMessages] = useState<Array<string>>([])
 
   useEffect(() => {
     $("input").focus()
@@ -21,10 +21,10 @@ const Chatbot = (props: { updateColorscheme: Function }) => {
   const onFormSubmit = async (event: any) => {
     event.preventDefault()
     
-    await setMessages([...messages, `You: ${term}`])
+    await setMessages([...marrstrMessages, `You: ${mstrTerm}`])
 
-    if(term.split(" ")[0] === "colorscheme"){
-      const termSplit: Array<string> = term.split(" ")
+    if(mstrTerm.split(" ")[0] === "colorscheme"){
+      const termSplit: Array<string> = mstrTerm.split(" ")
       if(termSplit.length === 2){
         switch(termSplit[1]){
           case "dark":
@@ -37,23 +37,23 @@ const Chatbot = (props: { updateColorscheme: Function }) => {
             props.updateColorscheme("coffee")
             break;
           default:
-            await setMessages([...messages, `Wes: That colorscheme does not exist :(`])
+            await setMessages([...marrstrMessages, `Wes: That colorscheme does not exist :(`])
         }
       }else{
-        await setMessages([...messages, `Wes: colorscheme <dark|light|coffee>`])
+        await setMessages([...marrstrMessages, `Wes: colorscheme <dark|light|coffee>`])
       }
-    }else if(term === "exit"){
+    }else if(mstrTerm === "exit"){
       window.close()
-    }else if(term.split(" ")[0] === "goto"){
-      const termSplit: Array<string> = term.split(" ")
+    }else if(mstrTerm.split(" ")[0] === "goto"){
+      const termSplit: Array<string> = mstrTerm.split(" ")
       if(termSplit.length === 2 && /^[a-zA-Z]+$/.test(termSplit[1])){
         history.push(`/${termSplit[1]}`);
       }else{
-        await setMessages([...messages, `Wes: goto <about|work|contact>`])
+        await setMessages([...marrstrMessages, `Wes: goto <about|work|contact>`])
       }
     }else{ //conversion
       let product: string
-      let text: string = term.toLowerCase().replace(/[^\w\s\d]/gi, '')
+      let text: string = mstrTerm.toLowerCase().replace(/[^\w\s\d]/gi, '')
       text = text
         .replace(/ a /g, ' ')
         .replace(/i feel /g, '')
@@ -69,7 +69,7 @@ const Chatbot = (props: { updateColorscheme: Function }) => {
         product = alternative[Math.floor(Math.random() * alternative.length)]
       }
 
-      await setMessages([...messages, `Wes: ${product}`])
+      await setMessages([...marrstrMessages, `Wes: ${product}`])
     }
 
     setTerm("")
@@ -94,14 +94,14 @@ const Chatbot = (props: { updateColorscheme: Function }) => {
       <div style={{ position: "relative" }}>
         <div>
           <div style={{ position: "absolute", bottom: 0 }}>
-            <h1 style={{fontSize: "xxx-large"}}>{messages.map(message => <div>&gt; {message}</div>)}</h1>
+            <h1 style={{fontSize: "xxx-large"}}>{marrstrMessages.map(strMessage => <div>&gt; {strMessage}</div>)}</h1>
           </div>
         </div>
       </div>
       <form onSubmit={onFormSubmit}>
         <h1 style={{fontSize: "xxx-large"}}>&gt; <input
           type="text"
-          value={term}
+          value={mstrTerm}
           onChange={e => setTerm(e.target.value)}
         />
         </h1>

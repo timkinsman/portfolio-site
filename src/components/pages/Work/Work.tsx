@@ -16,7 +16,7 @@ const Work = () => {
 
           </div>
         </div>
-        <h3 style={{padding: "50px"}}><a href="https://github.com/timkinsman" target="_blank">See more here</a></h3>
+        <h2 style={{padding: "50px"}}><a href="https://github.com/timkinsman" target="_blank">See more here</a></h2>
       </div>
       <Footer />
     </div>
