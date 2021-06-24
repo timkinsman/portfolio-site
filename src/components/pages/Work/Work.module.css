@@ -21,8 +21,9 @@
 
 .work-work {
     background: currentColor;
+    background-position: center;
     height: 100%;
-    opacity: 0.25;
+    opacity: 0.5;
     position: absolute;
     top: 0;
     transition: opacity 1s;
@@ -33,4 +34,12 @@
     cursor: pointer;
     opacity: 0;
     transition: opacity 1s;
+}
+
+.work-image {
+    background-position: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }

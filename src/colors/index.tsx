@@ -1,5 +1,6 @@
 export const colors: any = {
-    dark: {background: "#000C18", color: "#6688CC", hover: "#770811"},
-    light: {background: "#F5F5F5", color: "#6688CC", hover: "#770811"},
-    coffee: {background: "#292828", color: "#937c61", hover: "#8b4542"}
+    celadon: {background: "#254E70", color: "#37718E", hover: "#C33C54"},
+    coffee: {background: "#846C5B", color: "#CEA07E", hover: "#443742"},
+    light: {background: "#D6C3C9", color: "#B49082", hover: "#98473E"},
+    rifle: {background: "#474A2C", color: "#636940", hover: "#59A96A"},
 }

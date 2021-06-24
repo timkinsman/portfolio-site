@@ -6,6 +6,7 @@ import { alternative } from './dictionary/alternative'
 import { reply } from './dictionary/reply'
 import { robot } from './dictionary/robot'
 import { trigger } from './dictionary/trigger'
+import { colors } from "../../colors"
 import $ from 'jquery'
 
 const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
@@ -26,21 +27,13 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
     if(mstrTerm.split(" ")[0] === "colorscheme"){
       const termSplit: Array<string> = mstrTerm.split(" ")
       if(termSplit.length === 2){
-        switch(termSplit[1]){
-          case "dark":
-            props.updateColorscheme("dark")
-            break;
-          case "light":
-            props.updateColorscheme("light")
-            break;
-          case "coffee":
-            props.updateColorscheme("coffee")
-            break;
-          default:
-            await setMessages([...marrstrMessages, `That colorscheme does not exist :(`])
+        if(Object.keys(colors).includes(termSplit[1])){
+          props.updateColorscheme(termSplit[1]) 
+        }else{
+          await setMessages([...marrstrMessages, `That colorscheme does not exist!`])
         }
       }else{
-        await setMessages([...marrstrMessages, `colorscheme <dark|light|coffee>`])
+        await setMessages([...marrstrMessages, `colorscheme <celadon|coffee>`])
       }
     }else if(mstrTerm === "exit"){
       window.close()
