@@ -12,7 +12,6 @@ import $ from "jquery"
 const App = (props: any) => {
   useEffect(() => {
     $("body").css({"background": colors[props.portfolio.colorscheme].background, "color": colors[props.portfolio.colorscheme].color})
-    //$("a").hover(function(){ $(this).css('color', colors[props.portfolio.colorscheme].hover) }, function(){ $(this).css('color', colors[props.portfolio.colorscheme].color) })
   }, [props.portfolio.colorscheme])
 
   return (
