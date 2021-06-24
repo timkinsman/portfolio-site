@@ -13,7 +13,24 @@
     width: 100%;
 }
 
-.work-work {
+.work-container {
     border: 1px solid;
     padding-top: 75%;
+    position: relative;
+}
+
+.work-work {
+    background: currentColor;
+    height: 100%;
+    opacity: 0.25;
+    position: absolute;
+    top: 0;
+    transition: opacity 1s;
+    width: 100%;
+}
+
+.work-work:hover {
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 1s;
 }

@@ -3,13 +3,29 @@ import { connect } from "react-redux";
 import { colors } from '../../../colors';
 import Footer from "../../global/Footer/Footer"
 import Navbar from "../../global/Navbar/Navbar"
+import { d } from "../../../data";
 import styles from "./About.module.css"
+
+const Item = (props: {title: string, subtitle: string, link: string}) => {
+  return (
+    <div className="global-fadein" key={props.title}>
+      <h2>{props.link ? <a href={props.link} target="_blank">{props.title}</a> : props.title}</h2>
+      <h3>{props.subtitle}</h3>
+    </div>
+  )
+}
 
 const About = (props: any) => {
   const [mstrAbout, setAbout] = useState<string>("languages")
 
-  const renderAbout = (about: string): string => {
-    return ""
+  const renderAbout = (about: string): JSX.Element => {
+    return (
+      <div className={styles["about-right"]}>
+        {d[about].map((d: {title: string, subtitle: string, link: string}) => {
+          return <Item title={d.title} subtitle={d.subtitle} link={d.link} />
+        })}
+      </div>
+    )
   }
 
   return (
@@ -27,9 +43,7 @@ const About = (props: any) => {
             <h2 style={{color: mstrAbout === "publications" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("publications")}>Publications</a></h2>
             <h2 style={{color: mstrAbout === "achievements" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("achievements")}>Achievements</a></h2>
           </div>
-          <div className={styles["about-right"]}>
-            {renderAbout(mstrAbout)}
-          </div>
+          {renderAbout(mstrAbout)}
         </div>
       </div>
       <Footer />

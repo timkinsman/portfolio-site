@@ -14,7 +14,6 @@
 }
 
 .about-left {
-    align-items: center;
     border: 1px solid;
     display: grid;
     padding: 20px;
@@ -22,4 +21,7 @@
 
 .about-right {
     border: 1px solid;
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    padding: 20px;
 }

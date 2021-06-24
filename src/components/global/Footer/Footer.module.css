@@ -2,8 +2,11 @@
     align-items: center;
     bottom: 0;
     display: flex;
-    flex-direction: row-reverse;
     height: 60px;
     position: absolute;
     width: inherit;
+}
+
+.footer-right {
+    margin-left: auto;
 }
