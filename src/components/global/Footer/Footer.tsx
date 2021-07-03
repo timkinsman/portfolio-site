@@ -7,7 +7,7 @@ const Footer = (props: any) => {
     <div className={styles["footer-container"]}>
       {props.page === "home" ? "" : <Chatbot page="" />}
       <div className={styles["footer-right"]}>
-        <h2>© 2021 Tim Kinsman</h2>
+        <h4>© 2021 Tim Kinsman</h4>
       </div>
     </div>
   )

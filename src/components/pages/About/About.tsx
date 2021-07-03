@@ -9,8 +9,8 @@ import styles from "./About.module.css"
 const Item = (props: {title: string, subtitle: string, link: string}) => {
   return (
     <div className="global-fadein" key={props.title}>
-      <h2>{props.link ? <a href={props.link} target="_blank">{props.title}</a> : props.title}</h2>
-      <h3>{props.subtitle}</h3>
+      <h4>{props.link ? <a href={props.link} target="_blank">{props.title}</a> : props.title}</h4>
+      <h4>{props.subtitle}</h4>
     </div>
   )
 }
@@ -34,14 +34,14 @@ const About = (props: any) => {
       <div className={styles["about-hero"]}>
         <div className={styles["about-grid"]}>
           <div className={styles["about-left"]}>
-            <h2 style={{color: mstrAbout === "languages" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("languages")}>Languages</a></h2>
-            <h2 style={{color: mstrAbout === "databases" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("databases")}>Databases</a></h2>
-            <h2 style={{color: mstrAbout === "libraries" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("libraries")}>Libraries</a></h2>
-            <h2 style={{color: mstrAbout === "othertools" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("othertools")}>Other Tools</a></h2>
-            <h2 style={{color: mstrAbout === "education" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("education")}>Education</a></h2>
-            <h2 style={{color: mstrAbout === "experience" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("experience")}>Experience</a></h2>
-            <h2 style={{color: mstrAbout === "publications" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("publications")}>Publications</a></h2>
-            <h2 style={{color: mstrAbout === "achievements" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("achievements")}>Achievements</a></h2>
+            <h4 style={{color: mstrAbout === "languages" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("languages")}>Languages</a></h4>
+            <h4 style={{color: mstrAbout === "databases" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("databases")}>Databases</a></h4>
+            <h4 style={{color: mstrAbout === "libraries" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("libraries")}>Libraries</a></h4>
+            <h4 style={{color: mstrAbout === "othertools" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("othertools")}>Other Tools</a></h4>
+            <h4 style={{color: mstrAbout === "education" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("education")}>Education</a></h4>
+            <h4 style={{color: mstrAbout === "experience" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("experience")}>Experience</a></h4>
+            <h4 style={{color: mstrAbout === "publications" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("publications")}>Publications</a></h4>
+            <h4 style={{color: mstrAbout === "achievements" ? colors[props.portfolio.colorscheme].hover : "" }}><a onClick={() => setAbout("achievements")}>Achievements</a></h4>
           </div>
           {renderAbout(mstrAbout)}
         </div>

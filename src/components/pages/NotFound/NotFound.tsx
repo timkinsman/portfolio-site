@@ -10,7 +10,7 @@ const NotFound = (props: any) => {
     <div className="global-container global-fadein">
       <Navbar page="notfound" />
       <div className={styles["notfound-container"]}>
-        <h1 style={{fontSize: "xxx-large", color: colors[props.portfolio.colorscheme].hover}}>NOT FOUND</h1>
+        <h4 style={{fontSize: "xxx-large", color: colors[props.portfolio.colorscheme].hover}}>NOT FOUND</h4>
       </div>
       <Footer />
     </div>

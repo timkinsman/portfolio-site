@@ -13,7 +13,7 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
   const history: any = useHistory();
 
   const [mstrTerm, setTerm] = useState<string>("")
-  const [marrstrMessages, setMessages] = useState<Array<string>>(props.page === "home" ? ["Welcome"] : [])
+  const [marrstrMessages, setMessages] = useState<Array<string>>(props.page === "home" ? ["Welcome"] : ["Enter a command"])
 
   useEffect(() => {
     $("input").focus()
@@ -21,14 +21,17 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
 
   const onFormSubmit = async (event: any) => {
     event.preventDefault()
-    
-    //await setMessages([...marrstrMessages, `You: ${mstrTerm}`])
+
+    if(mstrTerm === ""){
+      return null
+    }
 
     if(mstrTerm.split(" ")[0] === "colorscheme"){
       const termSplit: Array<string> = mstrTerm.split(" ")
       if(termSplit.length === 2){
         if(Object.keys(colors).includes(termSplit[1])){
           props.updateColorscheme(termSplit[1]) 
+          await setMessages([...marrstrMessages, ""])
         }else{
           await setMessages([...marrstrMessages, `That colorscheme does not exist!`])
         }
@@ -89,13 +92,13 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
   return (
     <div>
       <form onSubmit={onFormSubmit}>
-        <h2>&gt; <input
+        <h4>&gt; <input
           type="text"
           placeholder={marrstrMessages[marrstrMessages.length - 1]}
           value={mstrTerm}
           onChange={e => setTerm(e.target.value)}
         />
-        </h2>
+        </h4>
       </form>
     </div>
   )
