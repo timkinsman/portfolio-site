@@ -1,15 +1,26 @@
 import React from "react"
+import { connect } from "react-redux"
+import Footer from "../../global/Footer/Footer"
 import Navbar from "../../global/Navbar/Navbar"
+import { colors } from '../../../colors';
+import styles from "./NotFound.module.css"
 
-const NotFound = () => {
+const NotFound = (props: any) => {
   return (
     <div className="global-container global-fadein">
-      <Navbar />
-      <div>
-        Zeppy :D
+      <Navbar page="notfound" />
+      <div className={styles["notfound-container"]}>
+        <h4 style={{fontSize: "xxx-large", color: colors[props.portfolio.colorscheme].hover}}>NOT FOUND</h4>
       </div>
+      <Footer />
     </div>
   )
 }
 
-export default NotFound
+const mapStateToProps = ( state: { portfolio: any; } ) => {
+  return {
+    portfolio: state.portfolio
+  }
+}
+
+export default connect(mapStateToProps, null)(NotFound);

@@ -1,11 +1,13 @@
 .navbar-container {
+    align-items: center;
     display: flex;
     height: 60px;
-    align-items: center;
+    position: absolute;
+    width: inherit;
 }
 
 .navbar-right {
-    margin-left: auto;
     display: flex;
     gap: 30px;
+    margin-left: auto;
 }

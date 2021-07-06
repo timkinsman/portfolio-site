@@ -1,6 +1,12 @@
 .footer-container {
-    height: 60px;
-    display: flex;
     align-items: center;
-    flex-direction: row-reverse;
+    bottom: 0;
+    display: flex;
+    height: 60px;
+    position: absolute;
+    width: inherit;
+}
+
+.footer-right {
+    margin-left: auto;
 }

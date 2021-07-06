@@ -1,4 +1,4 @@
-export const trigger = [
+export const trigger: Array<Array<string>> = [
   ['hi', 'hey', 'hello'],
   ['how are you', 'how are things'],
   ['what is going on', 'what is up'],

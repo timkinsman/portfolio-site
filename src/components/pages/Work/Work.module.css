@@ -1,0 +1,46 @@
+.work-hero {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+
+.work-grid {
+    column-gap: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.work-container {
+    border: 3px solid;
+    padding-top: 75%;
+    position: relative;
+}
+
+.work-work {
+    background: currentColor;
+    background-position: center;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    transition: opacity 1s;
+    width: 100%;
+}
+
+.work-work:hover {
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.work-image {
+    background-position: center;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-size: cover;
+}

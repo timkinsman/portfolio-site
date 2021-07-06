@@ -1,60 +1,82 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { updateColorscheme } from "../../actions";
 import { alternative } from './dictionary/alternative'
 import { reply } from './dictionary/reply'
 import { robot } from './dictionary/robot'
 import { trigger } from './dictionary/trigger'
+import { colors } from "../../colors"
 import $ from 'jquery'
 
-class Chatbot extends Component {
-  constructor () {
-    super()
-    this.state = { term: 'Timothy Kinsman', messages: [] }
-  }
+const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
+  const history: any = useHistory();
 
-  componentDidMount () {
-    $('input').focus()
-  }
+  const [mstrTerm, setTerm] = useState<string>("")
+  const [marrstrMessages, setMessages] = useState<Array<string>>(props.page === "home" ? ["Welcome"] : ["Enter a command"])
 
-  onFormSubmit = async (event) => {
+  useEffect(() => {
+    $("input").focus()
+  }, [])
+
+  const onFormSubmit = async (event: any) => {
     event.preventDefault()
-    console.log(`Me: ${this.state.term}`)
 
-    await this.setState(state => {
-      const messages = state.messages.push(`${this.state.term}`)
-      return messages
-    })
-
-    let product
-    let text = this.state.term.toLowerCase().replace(/[^\w\s\d]/gi, '')
-    text = text
-      .replace(/ a /g, ' ')
-      .replace(/i feel /g, '')
-      .replace(/whats/g, 'what is')
-      .replace(/please /g, '')
-      .replace(/ please/g, '')
-
-    if (this.compare(trigger, reply, text)) {
-      product = this.compare(trigger, reply, text)
-    } else if (text.match(/robot/gi)) {
-      product = robot[Math.floor(Math.random() * robot.length)]
-    } else {
-      product = alternative[Math.floor(Math.random() * alternative.length)]
+    if(mstrTerm === ""){
+      return null
     }
 
-    console.log(`Bot: ${product}`)
+    if(mstrTerm.split(" ")[0] === "colorscheme"){
+      const termSplit: Array<string> = mstrTerm.split(" ")
+      if(termSplit.length === 2){
+        if(Object.keys(colors).includes(termSplit[1])){
+          props.updateColorscheme(termSplit[1]) 
+          await setMessages([...marrstrMessages, ""])
+        }else{
+          await setMessages([...marrstrMessages, `That colorscheme does not exist!`])
+        }
+      }else{
+        await setMessages([...marrstrMessages, `colorscheme <celadon|coffee>`])
+      }
+    }else if(mstrTerm === "exit"){
+      window.close()
+    }else if(mstrTerm.split(" ")[0] === "goto"){
+      const termSplit: Array<string> = mstrTerm.split(" ")
+      if(termSplit.length === 2 && /^[a-zA-Z]+$/.test(termSplit[1])){
+        if(termSplit[1] === "home"){
+          history.push('/');
+        }else{
+          history.push(`/${termSplit[1]}`);
+        }
+      }else{
+        await setMessages([...marrstrMessages, `goto <home|about|work|contact>`])
+      }
+    }else{ //conversion
+      let product: string
+      let text: string = mstrTerm.toLowerCase().replace(/[^\w\s\d]/gi, '')
+      text = text
+        .replace(/ a /g, ' ')
+        .replace(/i feel /g, '')
+        .replace(/whats/g, 'what is')
+        .replace(/please /g, '')
+        .replace(/ please/g, '')
 
-    await this.setState(state => {
-      const messages = state.messages.push(`Robin: ${product}`)
-      return messages
-    })
+      if (compare(trigger, reply, text)) {
+        product = compare(trigger, reply, text)
+      } else if (text.match(/robot/gi)) {
+        product = robot[Math.floor(Math.random() * robot.length)]
+      } else {
+        product = alternative[Math.floor(Math.random() * alternative.length)]
+      }
 
-    console.log(this.state.messages)
+      await setMessages([...marrstrMessages, product])
+    }
 
-    this.setState({ term: '' })
+    setTerm("")
   }
 
-  compare = (triggerArray, replyArray, text) => {
-    let item
+  const compare = (triggerArray: Array<Array<string>>, replyArray: Array<Array<string>>, text: string) => {
+    let item: string = ""
     for (let x = 0; x < triggerArray.length; x++) {
       for (let y = 0; y < replyArray.length; y++) {
         if (triggerArray[x][y] === text) {
@@ -66,27 +88,22 @@ class Chatbot extends Component {
     return item
   }
 
-  render () {
-    return (
-      <div>
-        <div style={{ position: 'relative' }}>
-          <div>
-            <div style={{ position: 'absolute', bottom: '0', width: '30vw' }}>
-              {this.state.messages.map(message => <div>&gt; {message}</div>)}
-            </div>
-          </div>
-        </div>
-        <form onSubmit={this.onFormSubmit}>
-          <div>&gt; <input
-            type='text'
-            value={this.state.term}
-            onChange={e => this.setState({ term: e.target.value })}
-          />
-          </div>
-        </form>
-      </div>
-    )
-  }
+
+  return (
+    <div>
+      <form onSubmit={onFormSubmit}>
+        <h4>&gt; <input
+          type="text"
+          placeholder={marrstrMessages[marrstrMessages.length - 1]}
+          value={mstrTerm}
+          onChange={e => setTerm(e.target.value)}
+        />
+        </h4>
+      </form>
+    </div>
+  )
 }
 
-export default Chatbot
+export default connect(null, { 
+  updateColorscheme
+})(Chatbot);
