@@ -16,7 +16,7 @@ const Contact = () => {
         <h4><a href="tel:+61422903423" target="_blank">Phone</a></h4>
         <h4><a href="https://open.spotify.com/user/31rr7rfdy3rqb5wfsf3ypy6dloby?si=2d580c8571af4529" target="_blank">Spotify</a></h4>
       </div>
-      <Footer />
+      <Footer page="contact" />
     </div>
   )
 }

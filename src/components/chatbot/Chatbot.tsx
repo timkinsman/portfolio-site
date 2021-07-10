@@ -11,12 +11,14 @@ import $ from 'jquery'
 
 const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
   const history: any = useHistory();
-
   const [mstrTerm, setTerm] = useState<string>("")
-  const [marrstrMessages, setMessages] = useState<Array<string>>(props.page === "home" ? ["Welcome"] : ["Enter a command"])
 
   useEffect(() => {
     $("input").focus()
+
+    setTimeout(() => {
+      placeholder(props.page === "home" ? "Welcome" : "Enter a command")
+    }, 500);
   }, [])
 
   const onFormSubmit = async (event: any) => {
@@ -26,17 +28,18 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
       return null
     }
 
+    let product: string = ""
     if(mstrTerm.split(" ")[0] === "colorscheme"){
       const termSplit: Array<string> = mstrTerm.split(" ")
       if(termSplit.length === 2){
         if(Object.keys(colors).includes(termSplit[1])){
-          props.updateColorscheme(termSplit[1]) 
-          await setMessages([...marrstrMessages, ""])
+          props.updateColorscheme(termSplit[1])
+          product = "( ♥ ͜ʖ ♥)"
         }else{
-          await setMessages([...marrstrMessages, `That colorscheme does not exist!`])
+          product = "That colorscheme does not exist!"
         }
       }else{
-        await setMessages([...marrstrMessages, `colorscheme <celadon|coffee>`])
+        product = "colorscheme <celadon|coffee|light|mauve|msu|rifle>"
       }
     }else if(mstrTerm === "exit"){
       window.close()
@@ -49,10 +52,9 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
           history.push(`/${termSplit[1]}`);
         }
       }else{
-        await setMessages([...marrstrMessages, `goto <home|about|work|contact>`])
+        product = `goto <home|about|work|contact>`
       }
     }else{ //conversion
-      let product: string
       let text: string = mstrTerm.toLowerCase().replace(/[^\w\s\d]/gi, '')
       text = text
         .replace(/ a /g, ' ')
@@ -68,19 +70,18 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
       } else {
         product = alternative[Math.floor(Math.random() * alternative.length)]
       }
-
-      await setMessages([...marrstrMessages, product])
     }
 
-    setTerm("")
+    await setTerm("")
+    placeholder(product);
   }
 
-  const compare = (triggerArray: Array<Array<string>>, replyArray: Array<Array<string>>, text: string) => {
+  const compare: Function = (triggerArray: Array<Array<string>>, replyArray: Array<Array<string>>, text: string): string => {
     let item: string = ""
     for (let x = 0; x < triggerArray.length; x++) {
       for (let y = 0; y < replyArray.length; y++) {
         if (triggerArray[x][y] === text) {
-          const items = replyArray[x]
+          const items: Array<string> = replyArray[x]
           item = items[Math.floor(Math.random() * items.length)]
         }
       }
@@ -88,15 +89,35 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
     return item
   }
 
+  const printLetter: Function = (pstrProduct: any, pintIndex: number = 0): void => {
+    const arr: Array<string> = pstrProduct.split('')
+    const placeholder: string = $('#' + props.page + 'chatbot').attr("placeholder") + arr[pintIndex];
+
+    if($('#' + props.page + 'chatbot').attr("value") === ""){
+      setTimeout(() => {
+        $('#' + props.page + 'chatbot').attr("placeholder", placeholder);
+
+        if (pintIndex + 1 < arr.length) {
+          printLetter(pstrProduct, pintIndex + 1);
+        }
+      }, Math.floor(Math.random() * (90 - 50 + 1) + 50));
+    }
+  }  
+
+  const placeholder: Function = (pstrProduct: string): void => {
+    $('#' + props.page + 'chatbot').attr("placeholder", "");
+    printLetter(pstrProduct);
+  }
 
   return (
     <div>
       <form onSubmit={onFormSubmit}>
-        <h4>&gt; <input
+        <h4 style={{display: "flex", columnGap: "10px"}}>&gt; <input
+          id={props.page + "chatbot"}
           type="text"
-          placeholder={marrstrMessages[marrstrMessages.length - 1]}
           value={mstrTerm}
           onChange={e => setTerm(e.target.value)}
+          placeholder=""
         />
         </h4>
       </form>

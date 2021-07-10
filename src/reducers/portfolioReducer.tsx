@@ -4,7 +4,7 @@ import {
 
 const pstrColorscheme = localStorage.getItem("colorscheme")
 const INITIAL_STATE: { [colorscheme: string]: string } = {
-    colorscheme: pstrColorscheme ? pstrColorscheme : "celadon"
+    colorscheme: pstrColorscheme ? pstrColorscheme : "msu"
 };
 
 // eslint-disable-next-line

@@ -26,7 +26,7 @@ const Work = () => {
         </div>
         <h4 style={{padding: "50px"}}><a href="https://github.com/timkinsman" target="_blank">See more here</a></h4>
       </div>
-      <Footer />
+      <Footer page="work" />
     </div>
   )
 }
