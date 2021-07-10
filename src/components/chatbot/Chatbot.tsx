@@ -110,11 +110,12 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
   }
 
   return (
-    <div>
+    <div style={{width: "-webkit-fill-available"}}>
       <form onSubmit={onFormSubmit}>
         <h4 style={{display: "flex", columnGap: "10px"}}>&gt; <input
           id={props.page + "chatbot"}
           type="text"
+          style={{width: "-webkit-fill-available"}}
           value={mstrTerm}
           onChange={e => setTerm(e.target.value)}
           placeholder=""
