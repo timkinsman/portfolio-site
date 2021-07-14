@@ -5,6 +5,8 @@ import { images } from "../../../images"
 import $ from "jquery"
 import styles from "./Work.module.css"
 
+//pixely tvs, hover in focus
+
 const Work = () => {
   const fadeIn = (pobj: any) => {
     $(pobj.target).css('visibility','visible').hide().fadeIn(1000);

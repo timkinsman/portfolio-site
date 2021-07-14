@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { connect } from "react-redux";
-import { colors } from '../../../colors';
 import Footer from "../../global/Footer/Footer"
 import Navbar from "../../global/Navbar/Navbar"
 import { d } from "../../../data";
@@ -8,9 +7,9 @@ import styles from "./About.module.css"
 
 const Item = (props: {title: string, subtitle: string, link: string}) => {
   return (
-    <div className="global-fadein" key={props.title}>
+    <div className="global-fadein" key={props.title} style={{rowGap: "5px", display: "flex", flexDirection: "column"}}>
       <h4>{props.link ? <a href={props.link} target="_blank">{props.title}</a> : props.title}</h4>
-      <h4>{props.subtitle}</h4>
+      <h5 style={{opacity: "0.4"}}>{props.subtitle}</h5> 
     </div>
   )
 }
