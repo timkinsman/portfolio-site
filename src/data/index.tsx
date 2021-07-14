@@ -1,6 +1,6 @@
 export const d: any = {
     languages: [
-      {title: "C#", subtitle: "", link: "https://docs.microsoft.com/en-us/dotnet/csharp/"},
+      {title: "C#", subtitle: "", link: ""},
       {title: "C/C++", subtitle: "", link: ""},
       {title: "CSS/SASS", subtitle: "", link: ""},
       {title: "HTML", subtitle: "", link: ""},
