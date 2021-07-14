@@ -119,6 +119,8 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
           value={mstrTerm}
           onChange={e => setTerm(e.target.value)}
           placeholder=""
+          autoComplete="off"
+          spellCheck={false}
         />
         </h4>
       </form>

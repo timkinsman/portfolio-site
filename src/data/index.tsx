@@ -31,8 +31,8 @@ export const d: any = {
       {title: "Bachelor of Computer Science (Honours), Computer Science", subtitle: "2020 - 2020 · The University of Adelaide", link: ""},
     ],
     experience: [
-      {title: "JS Dev @ Brighter Futures Group", subtitle: "Jun 2020 - Feb 2021 · Sydney, New South Wales, Australia", link: ""},
-      {title: "Associate Software Engineer @ Allscripts", subtitle: "Nov 2020 - Present · Adelaide, New South Wales, Australia", link: ""},
+      {title: "JS Dev @ Brighter Futures Group", subtitle: "Jun 2020 - Feb 2021 · Sydney, NSW, Australia", link: ""},
+      {title: "Associate Software Engineer @ Allscripts", subtitle: "Nov 2020 - Present · Adelaide, SA, Australia", link: ""},
       {title: "Freelancer", subtitle: "Nov 2020 - Present", link: ""},
     ],
     publications: [
