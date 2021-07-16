@@ -39,10 +39,10 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
           product = "That colorscheme does not exist!"
         }
       }else{
-        product = "colorscheme <celadon|coffee|light|mauve|msu|rifle>"
+        product = "colorscheme <coffee|foxhound|msu|rifle>"
       }
-    }else if(mstrTerm === "exit"){
-      window.close()
+    /*}else if(mstrTerm === "exit"){
+      window.close()*/
     }else if(mstrTerm.split(" ")[0] === "goto"){
       const termSplit: Array<string> = mstrTerm.split(" ")
       if(termSplit.length === 2 && /^[a-zA-Z]+$/.test(termSplit[1])){

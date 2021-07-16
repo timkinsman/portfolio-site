@@ -37,9 +37,10 @@
 
 .work-image {
     background-position: center;
+    background-size: cover;
     height: 100%;
     position: absolute;
     top: 0;
+    visibility: hidden;
     width: 100%;
-    background-size: cover;
 }
