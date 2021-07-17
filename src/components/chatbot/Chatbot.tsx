@@ -35,11 +35,16 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
         if(Object.keys(colors).includes(termSplit[1])){
           props.updateColorscheme(termSplit[1])
           product = "( ♥ ͜ʖ ♥)"
+        }else if(termSplit[1] === "--help"){
+          product = "-A, --show-all"
+        }else if(["-A", "--show-all"].includes(termSplit[1])){
+          product = Object.keys(colors).join(", ")
         }else{
-          product = "That colorscheme does not exist!"
+          const arr = ["That colorscheme does not exist!", "hint: colorscheme -A"]
+          product = arr[Math.floor(Math.random() * arr.length)]
         }
       }else{
-        product = "colorscheme <coffee|foxhound|msu|rifle>"
+        product = "colorscheme [OPTION]"
       }
     /*}else if(mstrTerm === "exit"){
       window.close()*/
@@ -52,10 +57,10 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
           history.push(`/${termSplit[1]}`);
         }
       }else{
-        product = `goto <home|about|work|contact>`
+        product = `goto [ROUTE]`
       }
     }else{ //conversion
-      let text: string = mstrTerm.toLowerCase().replace(/[^\w\s\d]/gi, '')
+      let text: string = mstrTerm.toLowerCase().replace(/[^\w\s\d]/gi, '').trim()
       text = text
         .replace(/ a /g, ' ')
         .replace(/i feel /g, '')
@@ -100,7 +105,7 @@ const Chatbot = (props: { updateColorscheme: Function, page: string }) => {
         if (pintIndex + 1 < arr.length) {
           printLetter(pstrProduct, pintIndex + 1);
         }
-      }, Math.floor(Math.random() * (90 - 50 + 1) + 50));
+      }, Math.floor(Math.random() * (60 - 20 + 1) + 20));
     }
   }  
 
