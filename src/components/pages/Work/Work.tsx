@@ -16,7 +16,7 @@ const Work = () => {
     <div className="global-container global-fadein">
       <Navbar page="work" />
       <div className={styles["work-hero"]}>
-        <div className={styles["work-grid"]}>
+        <div id="work-grid" className={styles["work-grid"]}>
           <div className={styles["work-container"]}>
             <img className={styles["work-image"]} src={images.portfolio} onLoad={fadeIn} />
             <div className={styles["work-work"]} onClick={() => window.open('https://matthewkinsman.com','_blank')}></div>

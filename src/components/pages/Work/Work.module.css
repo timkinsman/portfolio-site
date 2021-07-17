@@ -9,7 +9,8 @@
 .work-grid {
     column-gap: 25px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /*** remove when in mobile */
+    row-gap: 25px;
     width: 100%;
 }
 
