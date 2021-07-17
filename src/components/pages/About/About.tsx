@@ -5,10 +5,10 @@ import Navbar from "../../global/Navbar/Navbar"
 import { d } from "../../../data";
 import styles from "./About.module.css"
 
-const Item = (props: {title: string, subtitle: string, link: string}) => {
+const Item = (props: {title: string, subtitle: string}) => {
   return (
     <div className="global-fadein" key={props.title} style={{rowGap: "5px", display: "flex", flexDirection: "column"}}>
-      <h4>{props.link ? <a href={props.link} target="_blank">{props.title}</a> : props.title}</h4>
+      <h4>{props.title}</h4>
       <h5 style={{opacity: "0.4"}}>{props.subtitle}</h5> 
     </div>
   )
@@ -22,8 +22,8 @@ const About = (props: any) => {
   const renderAbout = (about: string): JSX.Element => {
     return (
       <div className={`${styles["about-item"]} ${styles["about-right"]}`}>
-        {d[about].map((d: {title: string, subtitle: string, link: string}) => {
-          return <Item title={d.title} subtitle={d.subtitle} link={d.link} />
+        {d[about].map((d: {title: string, subtitle: string}) => {
+          return <Item title={d.title} subtitle={d.subtitle} />
         })}
         <div className={styles["about-screen"]} />
       </div>

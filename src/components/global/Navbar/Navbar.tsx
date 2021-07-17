@@ -25,7 +25,7 @@ const Navbar = (props: {page: string}) => {
       {
         _open === true && 
         <div id="navbar-ham" className={`${styles["navbar-ham"]} global-fadein`} style={{background: $("body").css("background")}}>
-          <h4><Link style={{opacity: props.page === "home" ? "1" : "" }} to="/">00.Tim Kinsman</Link></h4>
+          <h4><Link style={{opacity: props.page === "home" ? "1" : "" }} to="/">00.Home</Link></h4>
           <h4><Link style={{opacity: props.page === "about" ? "1" : "" }} to="/about">01.About</Link></h4>
           <h4><Link style={{opacity: props.page === "work" ? "1" : "" }} to="/work">02.Work</Link></h4>
           <h4><Link style={{opacity: props.page === "contact" ? "1" : "" }} to="/contact">03.Contact</Link></h4>
