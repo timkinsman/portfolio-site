@@ -7,8 +7,7 @@
 
 .about-grid {
     column-gap: 25px;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+    display: flex;
     height: 80%;
     width: 100%;
 }
@@ -21,6 +20,7 @@
 
 .about-right {
     grid-template-rows: repeat(8, 1fr);
+    width: -webkit-fill-available;
 }
 
 .about-screen {

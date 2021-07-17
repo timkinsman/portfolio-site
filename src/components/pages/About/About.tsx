@@ -35,7 +35,7 @@ const About = (props: any) => {
       <Navbar page="about" />
       <div className={styles["about-hero"]}>
         <div className={styles["about-grid"]}>
-          <div className={styles["about-item"]}>
+          <div className={styles["about-item"]} style={{width: "fit-content"}}>
             <h4><a style={{opacity: mstrAbout === "languages" ? "1" : "" }} onClick={() => setAbout("languages")}>Languages</a></h4>
             <h4><a style={{opacity: mstrAbout === "databases" ? "1" : "" }} onClick={() => setAbout("databases")}>Databases</a></h4>
             <h4><a style={{opacity: mstrAbout === "libraries" ? "1" : "" }} onClick={() => setAbout("libraries")}>Libraries</a></h4>
